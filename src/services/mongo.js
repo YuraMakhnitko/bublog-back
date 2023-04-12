@@ -1,21 +1,21 @@
 // MONGO CONNECT
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-require("dotenv").config();
+require('dotenv').config();
 
-const MONGO_URL = process.env.MONGO_URL;
+// const MONGO_URL = process.env.MONGO_URL;
 
-mongoose.connection.once("open", () => {
-  console.log("MongoDB connection ready!");
+mongoose.connection.once('open', () => {
+  console.log('MongoDB connection ready!');
 });
 
-mongoose.connection.on("error", (error) => {
-  console.error(error, "ERROR");
+mongoose.connection.on('error', (error) => {
+  console.error(error, 'ERROR');
 });
 
 async function mongoConnect() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(process.env.MONGODB_URI);
 }
 
 async function mongoDisconect() {
