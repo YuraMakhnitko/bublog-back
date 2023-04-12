@@ -1,0 +1,119 @@
+[
+  {
+    "commentId": 0,
+    "aritcleId": 100,
+    "authorId": 200,
+    "author": "Piter",
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png",
+    "commetnText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita."
+  },
+  {
+    "commentId": 1,
+    "aritcleId": 100,
+    "authorId": 201,
+    "author": "Den",
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375__340.png",
+    "commetnText": " Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita."
+  },
+  {
+    "commentId": 2,
+    "aritcleId": 100,
+    "authorId": 202,
+    "author": "Mary",
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://media.istockphoto.com/id/1331335536/pt/vetorial/female-avatar-icon.jpg?s=170667a&w=0&k=20&c=teiINyrppo9qeWiCv6k2RnRC3KHfoQYTQKLam252N3Q=",
+    "commetnText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolporro tenetur dolore impedit, non expedita."
+  },
+  {
+    "commentId": 3,
+    "aritcleId": 100,
+    "authorId": 203,
+    "author": "Steave",
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://www.citypng.com/public/uploads/preview/free-round-flat-male-portrait-avatar-user-icon-png-11639648873oplfof4loj.png",
+    "commetnText": "Samet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita."
+  },
+  {
+    "commentId": 4,
+    "aritcleId": 100,
+    "authorId": 200,
+    "author": "Piter",
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png",
+    "commetnText": "Dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita."
+  },
+  {
+    "commentId": 5,
+    "aritcleId": 100,
+    "authorId": 204,
+    "author": "Mykola",
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp3xq6yMAh7HKpnLoT17HDDvOIAJb0u98jPw&usqp=CAU",
+    "commetnText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita."
+  },
+  {
+    "commentId": 6,
+    "aritcleId": 101,
+    "authorId": 200,
+    "author": "Piter",
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png",
+    "commetnText": "Dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita."
+  },
+  {
+    "commentId": 7,
+    "aritcleId": 101,
+    "author": "Piter",
+    "authorId": 200,
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png",
+    "commetnText": "Dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita."
+  },
+  {
+    "commentId": 8,
+    "aritcleId": 102,
+    "authorId": 204,
+    "author": "Mykola",
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp3xq6yMAh7HKpnLoT17HDDvOIAJb0u98jPw&usqp=CAU",
+    "commetnText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita."
+  },
+  {
+    "commentId": 9,
+    "aritcleId": 102,
+    "authorId": 200,
+    "author": "Piter",
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png",
+    "commetnText": "Dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita."
+  },
+  {
+    "commentId": 10,
+    "aritcleId": 103,
+    "authorId": 200,
+    "author": "Piter",
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png",
+    "commetnText": "Dolore impedit, non expedita. Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolore impedit, non expedita."
+  },
+  {
+    "commentId": 11,
+    "aritcleId": 104,
+    "authorId": 202,
+    "author": "Mary",
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://media.istockphoto.com/id/1331335536/pt/vetorial/female-avatar-icon.jpg?s=170667a&w=0&k=20&c=teiINyrppo9qeWiCv6k2RnRC3KHfoQYTQKLam252N3Q=",
+    "commetnText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae officiis porro tenetur dolporro tenetur dolore impedit, non expedita."
+  },
+  {
+    "commentId": 12,
+    "aritcleId": 104,
+    "author": "Mykola",
+    "authorId": 204,
+    "commentAddDate": "March 09, 2023",
+    "authourAvatarUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp3xq6yMAh7HKpnLoT17HDDvOIAJb0u98jPw&usqp=CAU",
+    "commetnText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus adipisci ipsam corrupti beatae  non expedita."
+  }
+]

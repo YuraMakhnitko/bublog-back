@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Yura",
+    "id": 0,
+    "email": "pirata_axe@ukr.net",
+    "avatarUrl": "https://yuramakhnitko.github.io/portfolio/img/about/photo.webp",
+    "password": "Aa111111",
+    "passwordHash": ""
+  },
+
+  {
+    "name": "Reta Torphy",
+    "id": 101,
+    "email": "reta@ukr.net",
+    "avatarUrl": "https://img.freepik.com/free-psd/3d-illustration-person-with-long-hair_23-2149436197.jpg?w=740&t=st=1678350596~exp=1678351196~hmac=7dbf06daa6c24ed6c08b1175c95da11ed5cdc377f58b5a9f50720176cc631dcc",
+    "password": "Rr111111",
+    "passwordHash": ""
+  },
+  {
+    "name": "Albert Einstein",
+    "id": 102,
+    "email": "albert@ukr.net",
+    "avatarUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Albert_Einstein_%28Nobel%29.jpg",
+    "password": "Ee111111",
+    "passwordHash": ""
+  },
+  {
+    "name": "PELE",
+    "id": 103,
+    "email": "pele@ukr.net",
+    "avatarUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Pele_by_John_Mathew_Smith.jpg/411px-Pele_by_John_Mathew_Smith.jpg",
+    "password": "Pp111111",
+    "passwordHash": ""
+  },
+  {
+    "name": "da Vinci",
+    "id": 104,
+    "email": "leo@ukr.net",
+    "avatarUrl": "https://images.pexels.com/photos/10602790/pexels-photo-10602790.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "password": "Ll111111",
+    "passwordHash": ""
+  },
+  {
+    "name": "Darwin",
+    "id": 105,
+    "email": "dar@ukr.net",
+    "avatarUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/1878_Darwin_photo_by_Leonard_from_Woodall_1884_-_cropped_grayed_partially_cleaned.jpg/330px-1878_Darwin_photo_by_Leonard_from_Woodall_1884_-_cropped_grayed_partially_cleaned.jpg",
+    "password": "Dd111111",
+    "passwordHash": ""
+  },
+  {
+    "name": "Ford",
+    "id": 106,
+    "email": "ford@ukr.net",
+    "avatarUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Henry_Ford_at_Edison%27s_home_in_Ft._Myers_Florida_1914_detail_LC-LC-USZ62-131044.png/450px-Henry_Ford_at_Edison%27s_home_in_Ft._Myers_Florida_1914_detail_LC-LC-USZ62-131044.png",
+    "password": "Dd111111",
+    "passwordHash": ""
+  },
+  {
+    "name": "Niels Bor",
+    "id": 107,
+    "email": "bor@ukr.net",
+    "avatarUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Niels_Bohr.jpg/405px-Niels_Bohr.jpg",
+    "password": "Nn111111",
+    "passwordHash": ""
+  }
+]

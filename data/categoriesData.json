@@ -1,0 +1,9 @@
+[
+  { "title": "Latest", "categoryId": 1 },
+  { "title": "Astronomy", "categoryId": 2 },
+  { "title": "Nature", "categoryId": 3 },
+  { "title": "Sport", "categoryId": 4 },
+  { "title": "Architecture", "categoryId": 5 },
+  { "title": "Others", "categoryId": 6 },
+  { "title": "All Articles", "categoryId": 0 }
+]
