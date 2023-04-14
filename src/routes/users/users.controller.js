@@ -108,14 +108,17 @@ const update = async (req, res) => {
       {
         _id: id,
       },
-      { avatarUrl: req.body.avatarUrl },
-      {
-        returnDocument: "after",
-      },
-      (error, doc) => {
-        res.json(doc);
-      }
+      { avatarUrl: req.body.avatarUrl }
+      // {
+      //   returnDocument: "after",
+      // },
+      // (error, doc) => {
+      //   res.json(doc);
+      // }
     );
+    res.json({
+      success: true,
+    });
   } catch (error) {}
 };
 
