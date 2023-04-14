@@ -109,9 +109,9 @@ const update = async (req, res) => {
         _id: id,
       },
       { avatarUrl: req.body.avatarUrl },
-      // {
-      //   returnDocument: "after",
-      // },
+      {
+        returnDocument: "after",
+      },
       (error, doc) => {
         res.json(doc);
       }
