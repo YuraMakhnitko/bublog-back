@@ -102,7 +102,7 @@ const getMe = async (req, res) => {
     const user = await UserModelMongo.findById(req.userId);
 
     if (user.avatarUrl) {
-      getUserImg(user);
+      await getUserImg(user);
     }
     if (!user) {
       return res.status(404).json({
