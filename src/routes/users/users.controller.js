@@ -123,7 +123,7 @@ const update = async (req, res) => {
     const imgType = req.params.imgType;
     const pathImg = req.body.imgAvatarUrl;
 
-    const img = await fs.readFileSync(`src/${pathImg}`);
+    const img = await fs.readFileSync(`${pathImg}`);
     const encode_img = await img.toString('base64');
 
     await UserModelMongo.updateOne(
