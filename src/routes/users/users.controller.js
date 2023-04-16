@@ -1,7 +1,7 @@
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
-const UserModelMongo = require("../../models/users.mongo");
+const UserModelMongo = require('../../models/users.mongo');
 
 const register = async (req, res) => {
   try {
@@ -28,8 +28,8 @@ const register = async (req, res) => {
       {
         _id: user._id,
       },
-      "secret888",
-      { expiresIn: "999d" }
+      'secret888',
+      { expiresIn: '999d' }
     );
 
     const { passwordHash, ...userData } = user._doc;
@@ -38,7 +38,7 @@ const register = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Can`t register properly!",
+      message: 'Can`t register properly!',
     });
   }
 };
@@ -52,7 +52,7 @@ const login = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        message: "User not found!",
+        message: 'User not found!',
       });
     }
 
@@ -63,12 +63,12 @@ const login = async (req, res) => {
 
     if (!isValidPass) {
       return res.status(400).json({
-        message: "Invalid login or password!",
+        message: 'Invalid login or password!',
       });
     }
 
-    const token = jwt.sign({ _id: user._id }, "secret888", {
-      expiresIn: "999d",
+    const token = jwt.sign({ _id: user._id }, 'secret888', {
+      expiresIn: '999d',
     });
 
     const { passwordHash, ...userData } = user._doc;
@@ -77,7 +77,7 @@ const login = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Can`t auth properly!",
+      message: 'Can`t auth properly!',
     });
   }
 };
@@ -87,7 +87,7 @@ const getMe = async (req, res) => {
     const user = await UserModelMongo.findById(req.userId);
     if (!user) {
       return res.status(404).json({
-        message: "User not found!",
+        message: 'User not found!',
       });
     }
     const { passwordHash, ...userData } = user._doc;
@@ -95,11 +95,11 @@ const getMe = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(500).json({
-      message: "No access",
+      message: 'No access',
     });
   }
 };
-
+// update avatar
 const update = async (req, res) => {
   try {
     const id = req.params.id;
@@ -122,7 +122,7 @@ const update = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Can`t update avatar",
+      message: 'Can`t update avatar',
     });
   }
 };
