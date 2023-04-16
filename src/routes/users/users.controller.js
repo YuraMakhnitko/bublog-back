@@ -6,8 +6,8 @@ const fs = require('fs');
 
 const UserModelMongo = require('../../models/users.mongo');
 
-const getUserImg = async (user) => {
-  await fs.writeFileSync(
+const getUserImg = (user) => {
+  fs.writeFileSync(
     user.imgAvatarUrl,
     user.imgAvatar.data,
     user.imgAvatar.contentType

@@ -21,7 +21,7 @@ app.use(express.json());
 
 app.use(appRouter);
 
-// routes for upload users avatars and articles images
+// routes for upload users
 app.use('/src/uploads', express.static('src/uploads'));
 
 app.post('/upload/avatars/:id', uploadAvatar.single('image'), (req, res) => {
