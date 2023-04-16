@@ -8,11 +8,10 @@ const { storageAvatar, storageArticles } = require('./storage');
 const { appRouter } = require('./routes/app.router');
 
 const app = express();
+app.use(cors());
 
 const uploadAvatar = multer({ storage: storageAvatar });
 const uploadArticleImage = multer({ storage: storageArticles });
-
-app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
