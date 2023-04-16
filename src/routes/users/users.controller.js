@@ -1,7 +1,5 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-// const bodyParser = require('body-parser');
-// const path = require('path');
 const fs = require('fs');
 
 const UserModelMongo = require('../../models/users.mongo');

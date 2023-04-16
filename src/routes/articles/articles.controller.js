@@ -1,7 +1,6 @@
 const fs = require('fs');
 const articles = require('../../models/articles.mongo');
 const comment = require('../../models/comments.mongo');
-// const users = require('../../models/users.mongo');
 
 const getUserImg = (items) => {
   items.forEach((item) => {
