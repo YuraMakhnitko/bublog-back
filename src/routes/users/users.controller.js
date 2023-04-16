@@ -61,10 +61,6 @@ const login = async (req, res) => {
       { __v: 0 }
     );
 
-    if (user.avatarUrl) {
-      getUserImg(user);
-    }
-
     if (!user) {
       return res.status(404).json({
         message: 'User not found!',
@@ -87,6 +83,10 @@ const login = async (req, res) => {
     });
 
     const { passwordHash, imgAvatar, ...userData } = user._doc;
+
+    if (user.avatarUrl) {
+      getUserImg(user);
+    }
 
     res.json({ ...userData, token });
   } catch (error) {
@@ -125,8 +125,8 @@ const update = async (req, res) => {
     const imgType = req.params.imgType;
     const pathImg = req.body.imgAvatarUrl;
 
-    const img = fs.readFileSync(pathImg);
-    const encode_img = img.toString('base64');
+    const img = await fs.readFileSync(pathImg);
+    const encode_img = await img.toString('base64');
 
     await UserModelMongo.updateOne(
       {
