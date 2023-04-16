@@ -1,7 +1,18 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+// const bodyParser = require('body-parser');
+// const path = require('path');
+const fs = require('fs');
 
 const UserModelMongo = require('../../models/users.mongo');
+
+const getUserImg = async (user) => {
+  await fs.writeFileSync(
+    user.imgAvatarUrl,
+    user.imgAvatar.data,
+    user.imgAvatar.contentType
+  );
+};
 
 const register = async (req, res) => {
   try {
@@ -50,6 +61,10 @@ const login = async (req, res) => {
       { __v: 0 }
     );
 
+    if (user.avatarUrl) {
+      getUserImg(user);
+    }
+
     if (!user) {
       return res.status(404).json({
         message: 'User not found!',
@@ -71,7 +86,7 @@ const login = async (req, res) => {
       expiresIn: '999d',
     });
 
-    const { passwordHash, ...userData } = user._doc;
+    const { passwordHash, imgAvatar, ...userData } = user._doc;
 
     res.json({ ...userData, token });
   } catch (error) {
@@ -85,6 +100,10 @@ const login = async (req, res) => {
 const getMe = async (req, res) => {
   try {
     const user = await UserModelMongo.findById(req.userId);
+
+    if (user.avatarUrl) {
+      getUserImg(user);
+    }
     if (!user) {
       return res.status(404).json({
         message: 'User not found!',
@@ -103,18 +122,24 @@ const getMe = async (req, res) => {
 const update = async (req, res) => {
   try {
     const id = req.params.id;
+    const imgType = req.params.imgType;
+    const pathImg = req.body.imgAvatarUrl;
+
+    const img = fs.readFileSync(pathImg);
+    const encode_img = img.toString('base64');
 
     await UserModelMongo.updateOne(
       {
         _id: id,
       },
-      { avatarUrl: req.body.avatarUrl }
-      // {
-      //   returnDocument: "after",
-      // },
-      // (error, doc) => {
-      //   res.json(doc);
-      // }
+      {
+        imgAvatar: {
+          data: Buffer.from(encode_img, 'base64'),
+          contentType: imgType,
+        },
+        avatarUrl: req.body.avatarUrl,
+        imgAvatarUrl: req.body.imgAvatarUrl,
+      }
     );
     res.json({
       success: true,
