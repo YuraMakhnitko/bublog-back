@@ -41,6 +41,13 @@ const getArticlesImg = (items) => {
     }
   });
 };
+// const cleardArticles = (articles) => {
+//   articles.map((article) => {
+//     let { user, imgArticle, ...clearedImgAarticle } = article._doc;
+//     user = { name: user.name, avatarUrl: user.avatarUrl };
+//     return { ...clearedImgAarticle, user };
+//   });
+// };
 
 const getArticlesByCategory = async (req, res) => {
   try {
@@ -51,29 +58,49 @@ const getArticlesByCategory = async (req, res) => {
         .populate('user');
 
       const latest = allArticles.slice(0, 12);
+
+      const clearedArticles = await latest.map((article) => {
+        let { user, imgArticle, ...clearedImgAarticle } = article._doc;
+        user = { name: user.name, avatarUrl: user.avatarUrl };
+        return { ...clearedImgAarticle, user };
+      });
       getUserImg(latest);
       getArticlesImg(latest);
 
-      return res.status(200).json(latest);
+      return res.status(200).json(clearedArticles);
     }
     if (Number(req.body.categoryId) === 0) {
       const allArticles = await articles
-        .find({}, { __v: 0 })
+        .find({}, { __v: 0, imgArticle: 0 })
         .sort('-createdAt')
         .populate('user');
+
+      const clearedArticles = await allArticles.map((article) => {
+        let { user, imgArticle, ...clearedImgAarticle } = article._doc;
+        user = { name: user.name, avatarUrl: user.avatarUrl };
+        return { ...clearedImgAarticle, user };
+      });
+
       getUserImg(allArticles);
       getArticlesImg(allArticles);
 
-      return res.status(200).json(allArticles);
+      return res.status(200).json(clearedArticles);
     }
     const articlesByCategoryId = await articles
       .find({ category: req.body.categoryId }, { __v: 0 })
       .sort('-createdAt')
       .populate('user');
+
+    const clearedArticles = await articlesByCategoryId.map((article) => {
+      let { user, imgArticle, ...clearedImgAarticle } = article._doc;
+      user = { name: user.name, avatarUrl: user.avatarUrl };
+      return { ...clearedImgAarticle, user };
+    });
+
     getUserImg(articlesByCategoryId);
     getArticlesImg(articlesByCategoryId);
 
-    return res.status(200).json(articlesByCategoryId);
+    return res.status(200).json(clearedArticles);
   } catch (error) {
     console.log(error);
     res.status(500).json({
@@ -116,7 +143,10 @@ const getOneArticle = async (req, res) => {
 
     const articleWithcomments = { comments, ...article._doc };
 
-    res.status(200).json(articleWithcomments);
+    let { user, imgArticle, ...clearedImgAarticle } = articleWithcomments;
+    user = { name: user.name, avatarUrl: user.avatarUrl };
+
+    res.status(200).json({ ...clearedImgAarticle, user });
   } catch (error) {
     console.log(error);
     res.status(500).json({
@@ -226,14 +256,20 @@ const updateArticle = async (req, res) => {
 const searchArticles = async (req, res) => {
   try {
     const searchValue = req.params.value;
-    const allArticles = await articles.find().populate('user');
+    const allArticles = await articles.find({}, { __v: 0 }).populate('user');
     const searchedArticles = await allArticles.filter((article) => {
       return article.title.toLowerCase().includes(searchValue.toLowerCase());
     });
 
+    const clearedArticles = await searchedArticles.map((article) => {
+      let { user, imgArticle, ...clearedImgAarticle } = article._doc;
+      user = { name: user.name, avatarUrl: user.avatarUrl };
+      return { ...clearedImgAarticle, user };
+    });
+
     getArticlesImg(searchedArticles);
 
-    return res.status(200).json(searchedArticles);
+    return res.status(200).json(clearedArticles);
   } catch (error) {
     console.log(error);
     res.status(500).json({
