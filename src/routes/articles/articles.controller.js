@@ -61,7 +61,7 @@ const getArticlesByCategory = async (req, res) => {
 
       const clearedArticles = await latest.map((article) => {
         let { user, imgArticle, ...clearedImgAarticle } = article._doc;
-        user = { name: user.name, avatarUrl: user.avatarUrl };
+        user = { name: user.name, avatarUrl: user.avatarUrl, _id: user._id };
         return { ...clearedImgAarticle, user };
       });
       getUserImg(latest);
@@ -93,7 +93,7 @@ const getArticlesByCategory = async (req, res) => {
 
     const clearedArticles = await articlesByCategoryId.map((article) => {
       let { user, imgArticle, ...clearedImgAarticle } = article._doc;
-      user = { name: user.name, avatarUrl: user.avatarUrl };
+      user = { name: user.name, avatarUrl: user.avatarUrl, _id: user._id };
       return { ...clearedImgAarticle, user };
     });
 
@@ -144,7 +144,7 @@ const getOneArticle = async (req, res) => {
     const articleWithcomments = { comments, ...article._doc };
 
     let { user, imgArticle, ...clearedImgAarticle } = articleWithcomments;
-    user = { name: user.name, avatarUrl: user.avatarUrl };
+    user = { name: user.name, avatarUrl: user.avatarUrl, _id: user._id };
 
     res.status(200).json({ ...clearedImgAarticle, user });
   } catch (error) {
@@ -263,7 +263,7 @@ const searchArticles = async (req, res) => {
 
     const clearedArticles = await searchedArticles.map((article) => {
       let { user, imgArticle, ...clearedImgAarticle } = article._doc;
-      user = { name: user.name, avatarUrl: user.avatarUrl };
+      user = { name: user.name, avatarUrl: user.avatarUrl, _id: user._id };
       return { ...clearedImgAarticle, user };
     });
 
