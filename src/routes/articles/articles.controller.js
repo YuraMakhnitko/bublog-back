@@ -77,7 +77,7 @@ const getArticlesByCategory = async (req, res) => {
 
       const clearedArticles = await allArticles.map((article) => {
         let { user, imgArticle, ...clearedImgAarticle } = article._doc;
-        user = { name: user.name, avatarUrl: user.avatarUrl };
+        user = { name: user.name, avatarUrl: user.avatarUrl, _id: user._id };
         return { ...clearedImgAarticle, user };
       });
 
