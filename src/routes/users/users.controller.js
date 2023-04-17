@@ -5,11 +5,19 @@ const fs = require('fs');
 const UserModelMongo = require('../../models/users.mongo');
 
 const getUserImg = (user) => {
-  fs.writeFileSync(
-    user.imgAvatarUrl,
-    user.imgAvatar.data,
-    user.imgAvatar.contentType
-  );
+  try {
+    if (fs.readFileSync(user.imgAvatarUrl)) {
+      console.log(`Avatar ${user.imgAvatarUrl} exist!`);
+      return;
+    }
+  } catch (error) {
+    fs.writeFileSync(
+      user.imgAvatarUrl,
+      user.imgAvatar.data,
+      user.imgAvatar.contentType
+    );
+    console.log(`Avatar ${user.imgAvatarUrl} decoded!`);
+  }
 };
 
 const register = async (req, res) => {

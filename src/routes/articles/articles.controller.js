@@ -5,11 +5,19 @@ const comment = require('../../models/comments.mongo');
 const getUserImg = (items) => {
   items.forEach((item) => {
     if (item.user.avatarUrl) {
-      fs.writeFileSync(
-        item.user.imgAvatarUrl,
-        item.user.imgAvatar.data,
-        item.user.imgAvatar.contentType
-      );
+      try {
+        if (fs.readFileSync(item.user.imgAvatarUrl)) {
+          console.log(`Avatar ${item.user.imgAvatarUrl} exist!`);
+          return;
+        }
+      } catch (error) {
+        fs.writeFileSync(
+          item.user.imgAvatarUrl,
+          item.user.imgAvatar.data,
+          item.user.imgAvatar.contentType
+        );
+        console.log(`Avatar ${item.user.imgAvatarUrl} decoded!`);
+      }
     }
   });
 };
@@ -17,11 +25,19 @@ const getUserImg = (items) => {
 const getArticlesImg = (items) => {
   items.forEach((item) => {
     if (item.articleImgUrl) {
-      fs.writeFileSync(
-        item.imgArticleUrl,
-        item.imgArticle.data,
-        item.imgArticle.contentType
-      );
+      try {
+        if (fs.readFileSync(item.imgArticleUrl)) {
+          console.log(`Article image ${item.imgArticleUrl} EXIST!`);
+          return;
+        }
+      } catch (error) {
+        fs.writeFileSync(
+          item.imgArticleUrl,
+          item.imgArticle.data,
+          item.imgArticle.contentType
+        );
+        console.log(`Article image ${item.imgArticleUrl} DECODED!`);
+      }
     }
   });
 };
@@ -214,6 +230,8 @@ const searchArticles = async (req, res) => {
     const searchedArticles = await allArticles.filter((article) => {
       return article.title.toLowerCase().includes(searchValue.toLowerCase());
     });
+
+    getArticlesImg(searchedArticles);
 
     return res.status(200).json(searchedArticles);
   } catch (error) {
