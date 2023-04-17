@@ -71,7 +71,7 @@ const getArticlesByCategory = async (req, res) => {
     }
     if (Number(req.body.categoryId) === 0) {
       const allArticles = await articles
-        .find({}, { __v: 0, imgArticle: 0 })
+        .find({}, { __v: 0 })
         .sort('-createdAt')
         .populate('user');
 
