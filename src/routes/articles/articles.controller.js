@@ -1,6 +1,6 @@
-const fs = require('fs');
-const articles = require('../../models/articles.mongo');
-const comment = require('../../models/comments.mongo');
+const fs = require("fs");
+const articles = require("../../models/articles.mongo");
+const comment = require("../../models/comments.mongo");
 
 const getUserImg = (items) => {
   items.forEach((item) => {
@@ -41,21 +41,14 @@ const getArticlesImg = (items) => {
     }
   });
 };
-// const cleardArticles = (articles) => {
-//   articles.map((article) => {
-//     let { user, imgArticle, ...clearedImgAarticle } = article._doc;
-//     user = { name: user.name, avatarUrl: user.avatarUrl };
-//     return { ...clearedImgAarticle, user };
-//   });
-// };
 
 const getArticlesByCategory = async (req, res) => {
   try {
     if (Number(req.body.categoryId) === 1) {
       const allArticles = await articles
         .find({}, { __v: 0 })
-        .sort('-createdAt')
-        .populate('user');
+        .sort("-createdAt")
+        .populate("user");
 
       const latest = allArticles.slice(0, 12);
 
@@ -72,8 +65,8 @@ const getArticlesByCategory = async (req, res) => {
     if (Number(req.body.categoryId) === 0) {
       const allArticles = await articles
         .find({}, { __v: 0 })
-        .sort('-createdAt')
-        .populate('user');
+        .sort("-createdAt")
+        .populate("user");
 
       const clearedArticles = await allArticles.map((article) => {
         let { user, imgArticle, ...clearedImgAarticle } = article._doc;
@@ -88,8 +81,8 @@ const getArticlesByCategory = async (req, res) => {
     }
     const articlesByCategoryId = await articles
       .find({ category: req.body.categoryId }, { __v: 0 })
-      .sort('-createdAt')
-      .populate('user');
+      .sort("-createdAt")
+      .populate("user");
 
     const clearedArticles = await articlesByCategoryId.map((article) => {
       let { user, imgArticle, ...clearedImgAarticle } = article._doc;
@@ -104,7 +97,7 @@ const getArticlesByCategory = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: 'Can`t find articles!',
+      message: "Can`t find articles!",
     });
   }
 };
@@ -115,8 +108,8 @@ const getOneArticle = async (req, res) => {
 
     const comments = await comment
       .find({ article: articleId })
-      .sort('-createdAt')
-      .populate('user');
+      .sort("-createdAt")
+      .populate("user");
 
     const article = await articles
       .findOneAndUpdate(
@@ -128,9 +121,9 @@ const getOneArticle = async (req, res) => {
             vievCount: 1,
           },
         },
-        { returnDocument: 'after' }
+        { returnDocument: "after" }
       )
-      .populate('user');
+      .populate("user");
     if (article.articleImgUrl) {
       fs.writeFileSync(
         article.imgArticleUrl,
@@ -150,7 +143,7 @@ const getOneArticle = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: 'Can`t find article!',
+      message: "Can`t find article!",
     });
   }
 };
@@ -160,27 +153,37 @@ const createArticle = async (req, res) => {
     const imgType = req.params.imgType;
     const pathImg = req.body.imgArticleUrl;
     const img = fs.readFileSync(pathImg);
-    const encode_img = img.toString('base64');
+    const encode_img = img.toString("base64");
 
-    const doc = new articles({
-      category: req.body.categoryId,
-      title: req.body.title,
-      articleText: req.body.articleText,
-      articleImgUrl: req.body.articleImgUrl,
-      imgArticleUrl: req.body.imgArticleUrl,
-      imgArticle: {
-        data: Buffer.from(encode_img, 'base64'),
-        contentType: imgType,
-      },
-      user: req.userId,
-    });
+    if (req.body.imgArticleUrl) {
+    }
+
+    const doc = req.body.imgArticleUrl
+      ? new articles({
+          category: req.body.categoryId,
+          title: req.body.title,
+          articleText: req.body.articleText,
+          articleImgUrl: req.body.articleImgUrl,
+          imgArticleUrl: req.body.imgArticleUrl,
+          imgArticle: {
+            data: Buffer.from(encode_img, "base64"),
+            contentType: imgType,
+          },
+          user: req.userId,
+        })
+      : new articles({
+          category: req.body.categoryId,
+          title: req.body.title,
+          articleText: req.body.articleText,
+          user: req.userId,
+        });
 
     const article = await doc.save();
     res.json(article);
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: 'Can`t create article',
+      message: "Can`t create article",
     });
   }
 };
@@ -196,13 +199,13 @@ const removeArticle = async (req, res) => {
       .catch((error) => {
         console.log(error);
         res.status(500).json({
-          message: 'Can`t remove article!',
+          message: "Can`t remove article!",
         });
       });
     await articles.findByIdAndDelete({ _id: id }).catch((error) => {
       console.log(error);
       res.status(500).json({
-        message: 'Can`t remove article!',
+        message: "Can`t remove article!",
       });
     });
 
@@ -212,7 +215,7 @@ const removeArticle = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.json({
-      message: 'Can`t get article!',
+      message: "Can`t get article!",
     });
   }
 };
@@ -222,7 +225,7 @@ const updateArticle = async (req, res) => {
     const imgType = req.params.imgType;
     const pathImg = req.body.imgArticleUrl;
     const img = fs.readFileSync(pathImg);
-    const encode_img = img.toString('base64');
+    const encode_img = img.toString("base64");
 
     const id = req.params.articleId;
     await articles.updateOne(
@@ -235,7 +238,7 @@ const updateArticle = async (req, res) => {
         articleText: req.body.articleText,
         imgArticleUrl: req.body.imgArticleUrl,
         imgArticle: {
-          data: Buffer.from(encode_img, 'base64'),
+          data: Buffer.from(encode_img, "base64"),
           contentType: imgType,
         },
         articleImgUrl: req.body.articleImgUrl,
@@ -248,7 +251,7 @@ const updateArticle = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: 'Can`t update article!',
+      message: "Can`t update article!",
     });
   }
 };
@@ -256,7 +259,7 @@ const updateArticle = async (req, res) => {
 const searchArticles = async (req, res) => {
   try {
     const searchValue = req.params.value;
-    const allArticles = await articles.find({}, { __v: 0 }).populate('user');
+    const allArticles = await articles.find({}, { __v: 0 }).populate("user");
     const searchedArticles = await allArticles.filter((article) => {
       return article.title.toLowerCase().includes(searchValue.toLowerCase());
     });
@@ -273,7 +276,7 @@ const searchArticles = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: 'Can`t find articles!',
+      message: "Can`t find articles!",
     });
   }
 };
