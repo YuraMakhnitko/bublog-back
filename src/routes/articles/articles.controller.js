@@ -23,13 +23,18 @@ const getUserImg = (items) => {
 };
 
 const getArticlesImg = (items) => {
-  items.forEach((item) => {
+  const newItems = items.filter((item) => {
+    return item.hasOwnProperty("articleImgUrl");
+  });
+  console.log(items);
+  newItems.forEach((item) => {
     if (item.articleImgUrl) {
       try {
         if (fs.readFileSync(item.imgArticleUrl)) {
           console.log(`Article image ${item.imgArticleUrl} EXIST!`);
           return;
         }
+        return;
       } catch (error) {
         fs.writeFileSync(
           item.imgArticleUrl,
@@ -124,6 +129,16 @@ const getOneArticle = async (req, res) => {
         { returnDocument: "after" }
       )
       .populate("user");
+    // try {
+
+    // } catch (error) {
+    //   if (article.articleImgUrl) {
+    //     fs.writeFileSync(
+    //       article.imgArticleUrl,
+    //       article.imgArticle.data,
+    //       article.imgArticle.contentType
+    //     );
+    // }
     if (article.articleImgUrl) {
       fs.writeFileSync(
         article.imgArticleUrl,
@@ -150,13 +165,10 @@ const getOneArticle = async (req, res) => {
 
 const createArticle = async (req, res) => {
   try {
-    const imgType = req.params.imgType;
-    const pathImg = req.body.imgArticleUrl;
-    const img = fs.readFileSync(pathImg);
-    const encode_img = img.toString("base64");
-
-    if (req.body.imgArticleUrl) {
-    }
+    const imgType = req.body.imgArticleUrl ? req.body.imgType : "";
+    const pathImg = req.body.imgArticleUrl ? req.body.imgArticleUrl : "";
+    const img = req.body.imgArticleUrl ? fs.readFileSync(pathImg) : "";
+    const encode_img = req.body.imgArticleUrl ? img.toString("base64") : "";
 
     const doc = req.body.imgArticleUrl
       ? new articles({
@@ -222,10 +234,10 @@ const removeArticle = async (req, res) => {
 
 const updateArticle = async (req, res) => {
   try {
-    const imgType = req.params.imgType;
-    const pathImg = req.body.imgArticleUrl;
-    const img = fs.readFileSync(pathImg);
-    const encode_img = img.toString("base64");
+    const imgType = req.body.imgArticleUrl ? req.body.imgType : "";
+    const pathImg = req.body.imgArticleUrl ? req.body.imgArticleUrl : "";
+    const img = req.body.imgArticleUrl ? fs.readFileSync(pathImg) : "";
+    const encode_img = req.body.imgArticleUrl ? img.toString("base64") : "";
 
     const id = req.params.articleId;
     await articles.updateOne(
