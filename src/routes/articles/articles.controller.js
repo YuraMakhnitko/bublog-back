@@ -31,7 +31,7 @@ const getArticlesImg = (items) => {
     // console.log(item.articleImgUrl);
     // return item.imgArticleUrl;
   });
-  console.log(newItems);
+  // console.log(newItems);
   newItems.forEach((item) => {
     if (item.articleImgUrl) {
       try {
@@ -145,6 +145,10 @@ const getOneArticle = async (req, res) => {
     //     );
     // }
     if (article.articleImgUrl) {
+      console.log(
+        article.imgArticle.contentType,
+        'article.imgArticle.contentType'
+      );
       fs.writeFileSync(
         article.imgArticleUrl,
         article.imgArticle.data,
@@ -174,6 +178,7 @@ const createArticle = async (req, res) => {
     const pathImg = req.body.imgArticleUrl ? req.body.imgArticleUrl : '';
     const img = req.body.imgArticleUrl ? fs.readFileSync(pathImg) : '';
     const encode_img = req.body.imgArticleUrl ? img.toString('base64') : '';
+    console.log(imgType, 'imgType');
 
     const doc = req.body.imgArticleUrl
       ? new articles({
@@ -184,7 +189,7 @@ const createArticle = async (req, res) => {
           imgArticleUrl: req.body.imgArticleUrl,
           imgArticle: {
             data: Buffer.from(encode_img, 'base64'),
-            contentType: imgType,
+            // contentType: imgType,
           },
           user: req.userId,
         })
@@ -256,7 +261,7 @@ const updateArticle = async (req, res) => {
         imgArticleUrl: req.body.imgArticleUrl,
         imgArticle: {
           data: Buffer.from(encode_img, 'base64'),
-          contentType: imgType,
+          // contentType: imgType,
         },
         articleImgUrl: req.body.articleImgUrl,
         user: req.userId,
